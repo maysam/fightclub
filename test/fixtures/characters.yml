@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Greymon
+  life_point: 3
+  attack_point: 6
+  defence_point: 9
+
+two:
+  name: Tailmon
+  life_point: 4
+  attack_point: 5
+  defence_point: 6

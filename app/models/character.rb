@@ -13,8 +13,8 @@ class Character < ApplicationRecord
 
   AVERAGE_POINTS = (AVERAGE_MAX - AVERAGE_MIN) / 2.0
 
-  UPPER_LIMIT = AVERAGE_POINTS + (AVERAGE_MAX - AVERAGE_POINTS) / 2.0
-  LOWER_LIMIT = AVERAGE_POINTS # - (AVERAGE_POINTS - AVERAGE_MIN) / 2.0
+  UPPER_LIMIT = (AVERAGE_MAX + AVERAGE_POINTS) / 2.0
+  LOWER_LIMIT = (AVERAGE_MIN + AVERAGE_POINTS) / 2.0
 
   validate :points_are_in_range
   validate :balanced?
