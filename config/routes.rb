@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :weapons
   resources :characters
   root 'arena#index'
   get 'fight/:id', to: 'arena#fight', as: 'fight'

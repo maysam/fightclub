@@ -1,0 +1,32 @@
+<%= form_with(model: weapon, local: true) do |form| %>
+  <% if weapon.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% weapon.errors.full_messages.each do |message| %>
+        <div class="alert alert-danger">
+          <%= message %>
+        </div>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :points %>
+    <%= form.number_field :points, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :weapon_type, 'Type' %>
+    <%= form.select(:weapon_type, [Weapon::WEAPON, Weapon::SHIELD], class: 'form-control') %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
