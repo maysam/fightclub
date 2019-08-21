@@ -22,3 +22,53 @@
 
 <%= link_to 'Edit', edit_character_path(@character), class: 'btn btn-primary' %>
 <%= link_to 'Back', characters_path, class: 'btn btn-info' %>
+
+<br />
+<br />
+
+<table class="table">
+  <tr>
+    <td>
+      ID
+    </td>
+    <td>
+      Winner
+    </td>
+    <td>
+      Loser
+    </td>
+    <td>
+      Point Difference
+    </td>
+    <td>
+      Date
+    </td>
+  </tr>
+<% if (@character.fights.empty?) then %>
+  <tr><td colspan="6">
+    <center>No fight reported yet!</center>
+  </td></tr>
+<% end %>
+<% @character.fights.each { |fight| %>
+  <tr>
+    <td>
+      <%=fight.id%>
+    </td>
+    <td>
+      <%= fight.winner %>
+    </td>
+    <td>
+      <%=fight.loser%>
+    </td>
+    <td>
+      <%=fight.points%>
+    </td>
+    <td>
+      <%=fight.created_at.to_s%>
+    </td>
+    <td>
+      <td><%= link_to 'details', fight, class: 'btn btn-info' %></td>
+    </td>
+  </tr>
+<% } %>
+</table>

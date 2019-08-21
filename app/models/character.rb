@@ -16,6 +16,15 @@ class Character < ApplicationRecord
   UPPER_LIMIT = (AVERAGE_MAX + AVERAGE_POINTS) / 2.0
   LOWER_LIMIT = (AVERAGE_MIN + AVERAGE_POINTS) / 2.0
 
+  has_many :victories, class_name: 'Fight', foreign_key: :winner_id
+  has_many :losts, class_name: 'Fight', foreign_key: :loser_id
+
+  attr_accessor :life
+
+  def fights
+    (victories + losts).sort_by { |e| e.id }
+  end
+
   validates :name, presence: true, uniqueness: true
   validate :points_are_in_range
   validate :balanced?
@@ -51,20 +60,20 @@ class Character < ApplicationRecord
   def attack(opponent)
     log = []
     attack_force = (attack_point * rand).round(2)
-    log << {info: "#{self} attacks #{opponent} with #{attack_force} force" }
+    log << {status: :info, news: "#{self} attacks #{opponent} with #{attack_force} force" }
     defence_force = (opponent.defence_point * rand).round(2)
     # log << {info: "#{opponent} defending with #{defence_force} force"}
     if attack_force > defence_force
       damage = (attack_force - defence_force).round(2)
-      log << {danger: "#{opponent} suffered #{damage} points"}
-      opponent.life_point -= damage
+      log << {status: :danger, news: "#{opponent} suffered #{damage} points"}
+      opponent.life -= damage
     else
-      log << {warning: "#{opponent} didn't feel anything"}
+      log << {status: :warning, news: "#{opponent} didn't feel anything"}
     end
     log
   end
 
   def to_s
-    "<b>#{name}</b>"
+    "<b><a href='/characters/#{id}'>#{name}<a/></b>".html_safe
   end
 end

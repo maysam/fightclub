@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: info
+  news: player one wins
+  fight: one
+
+two:
+  status: success
+  news: player two wins
+  fight: two

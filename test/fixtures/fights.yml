@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  winner: one
+  loser: two
+  points: 2.78
+
+two:
+  winner: two
+  loser: one
+  points: 3.14

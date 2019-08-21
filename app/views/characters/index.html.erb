@@ -12,6 +12,7 @@
       <th>Life point</th>
       <th>Attack point</th>
       <th>Defence point</th>
+      <th>Fights</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -27,6 +28,7 @@
         <td><%= character.life_point %></td>
         <td><%= character.attack_point %></td>
         <td><%= character.defence_point %></td>
+        <td><%= character.fights.count %></td>
         <td><%= link_to 'Show', character, class: 'btn btn-primary' %></td>
         <td><%= link_to 'Edit', edit_character_path(character), class: 'btn btn-info' %></td>
         <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>

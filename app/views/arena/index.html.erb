@@ -18,9 +18,11 @@
   <button type="submit" class="btn btn-warning">Fight</button>
 </form>
 <p>
-<% @log and @log.each_with_index { |entry| %>
-  <div class="alert alert-<%= entry.keys[0] %>">
-    <%= entry.values[0].html_safe %>
-  </div>
-<% } %>
+  <ul class="list-group">
+    <% @fight and @fight.logs.each { |log| %>
+      <li class="list-group-item list-group-item-<%= log.status %>">
+        <%= log.news.html_safe %>
+      </li>
+    <% } %>
+  </ul>
 </p>
