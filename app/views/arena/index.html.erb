@@ -1,2 +1,26 @@
 <h1>Fight Club</h1>
 <p>Build characters and watch them fight</p>
+<h2>Pick two players to fight</h2>
+<% if @error %>
+  <div class="alert alert-danger">
+    <%= @error %>
+  </div>
+<% end %>
+<form class="form-inline">
+  <div class="form-group">
+    <label class="control-label">Player one :</label>
+    <%= select_tag(:player_one, options_for_select(Character.pluck(:name, :id), params[:player_one]), class: 'form-control', prompt: 'select player one', required: true) %>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Player two :</label>
+    <%= select_tag(:player_two, options_for_select(Character.pluck(:name, :id), params[:player_two]), class: 'form-control', prompt: 'select player two', required: true) %>
+  </div>
+  <button type="submit" class="btn btn-warning">Fight</button>
+</form>
+<p>
+<% @log and @log.each_with_index { |entry| %>
+  <div class="alert alert-<%= entry.keys[0] %>">
+    <%= entry.values[0].html_safe %>
+  </div>
+<% } %>
+</p>

@@ -17,7 +17,7 @@ class CharactersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create character" do
     assert_difference('Character.count') do
-      post characters_url, params: { character: { attack_point: @character.attack_point, defence_point: @character.defence_point, life_point: @character.life_point, name: @character.name } }
+      post characters_url, params: { character: { attack_point: @character.attack_point, defence_point: @character.defence_point, life_point: @character.life_point, name: @character.name + '_dup' } }
     end
 
     assert_redirected_to character_url(Character.last)

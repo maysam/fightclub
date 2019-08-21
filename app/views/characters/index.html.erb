@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Characters</h1>
-
+<div style="display: flex; justify-content: space-between;">
+  <h1>Characters</h1>
+  <%= link_to 'New Character', new_character_path, class: 'btn btn-primary', style: 'height: intrinsic' %>
+</div>
 <table class="table">
   <thead>
     <tr>
@@ -25,14 +27,12 @@
         <td><%= character.life_point %></td>
         <td><%= character.attack_point %></td>
         <td><%= character.defence_point %></td>
-        <td><%= link_to 'Show', character %></td>
-        <td><%= link_to 'Edit', edit_character_path(character) %></td>
-        <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', character, class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_character_path(character), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Character', new_character_path %>
+<!-- TODO: pagination -->
+<%= link_to 'New Character', new_character_path, class: 'btn btn-primary' %>
