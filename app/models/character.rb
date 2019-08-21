@@ -73,6 +73,11 @@ class Character < ApplicationRecord
     log
   end
 
+  def recalculate_win_rate
+    win_rate = victories.count === 0 ? 0 : 1.0 * victories.count / fights.count
+    update_attributes win_rate: win_rate
+  end
+
   def to_s
     "<b><a href='/characters/#{id}'>#{name}<a/></b>".html_safe
   end

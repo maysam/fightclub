@@ -23,11 +23,17 @@ class ArenaController < ApplicationController
             @log += two.attack one
           end
         end
-        @fight.winner = one.life <= 0 ? two : one
-        @fight.loser = one.life <= 0 ? one : two
-        @fight.points = @fight.winner.life.round(2)
+        winner = one.life <= 0 ? two : one
+        loser = one.life <= 0 ? one : two
+        @fight.winner = winner
+        @fight.loser = loser
+        @fight.points = winner.life.round(2)
         @fight.save
-        @log << {status: :success, news: "#{@fight.winner} won with #{@fight.points} points!"}
+        winner.experience_point += @fight.points
+        winner.save
+        winner.recalculate_win_rate
+        loser.recalculate_win_rate
+        @log << {status: :success, news: "#{winner} won with #{@fight.points} points!"}
         @log.each { |entry|
           @fight.logs.create entry
         }

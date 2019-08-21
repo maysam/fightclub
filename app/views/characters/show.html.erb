@@ -20,6 +20,18 @@
   <%= @character.defence_point %>
 </p>
 
+<p>
+  <strong>Experience point:</strong>
+  <span class="badge">
+    <%= @character.experience_point %>
+  </span>
+</p>
+
+<p>
+  <strong>Win Rate:</strong>
+  <span class="badge"><%= (@character.win_rate * 100).round(2) %>%</span>
+</p>
+
 <%= link_to 'Edit', edit_character_path(@character), class: 'btn btn-primary' %>
 <%= link_to 'Back', characters_path, class: 'btn btn-info' %>
 

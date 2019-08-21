@@ -1,8 +1,9 @@
 <h1>Fight between <%=@fight.winner%> and <%=@fight.loser%></h1>
-<p>
-<% @fight and @fight.logs.each { |log| %>
-  <div class="alert alert-<%= log.status %>">
-    <%= log.news.html_safe %>
-  </div>
-<% } %>
-</p>
+
+<ul class="list-group">
+  <% @fight and @fight.logs.each { |log| %>
+    <li class="list-group-item list-group-item-<%= log.status %>">
+      <%= log.news.html_safe %>
+    </li>
+  <% } %>
+</ul>
